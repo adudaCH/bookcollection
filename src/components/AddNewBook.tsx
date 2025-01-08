@@ -59,9 +59,9 @@ const AddNewBook: FunctionComponent = () => {
             className="mx-auto mt-3"
             style={{ maxWidth: "25rem" }}
         >
-            <h1 className="text-center">Add New Book</h1>
+            <h1 className="text-center carter-one-regular">Add New Book</h1>
 
-            {/* Book Title */}
+
             <div className="mb-3">
                 <input
                     id="title"
@@ -80,7 +80,7 @@ const AddNewBook: FunctionComponent = () => {
                 )}
             </div>
 
-            {/* Author */}
+
             <div className="mb-3">
                 <input
                     id="author"
@@ -141,13 +141,11 @@ const AddNewBook: FunctionComponent = () => {
                 )}
             </div>
 
-            {/* Submit Button */}
             <button
                 type="submit"
                 className="btn btn-success w-100 d-flex align-items-center justify-content-center"
                 disabled={isSubmitting}
             >
-                {/* TODO: see why clicking this button takes me to the book page */}
                 <FontAwesomeIcon icon={faPlus} className="me-2" />
                 {isSubmitting ? "Adding..." : "Add"}
             </button>

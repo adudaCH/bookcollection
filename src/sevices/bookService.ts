@@ -2,7 +2,7 @@
 import axios from "axios";
 import { Book } from "../interfaces/Interfaces";
 
-const api: string = `${process.env.REACT_APP_API}`;
+const api: string = `${process.env.REACT_APP_API}/books`;
 
 // get all books from 
 export function getAllBooks(){
@@ -31,7 +31,7 @@ export function addBook(arg0: Book) {
 }
 
 export const deleteBook = (id: string) => {
-    return axios.delete(`/api/books/${id}`); 
+    return axios.delete(` ${api}/${id}`); 
 };
 
 export function updateBook(id: string, bookData: Book) {

@@ -4,13 +4,14 @@ import * as yup from "yup";
 import {Link, useNavigate} from "react-router-dom";
 import { getAllUsers } from "../sevices/userService";
 import { Users } from "../interfaces/Interfaces";
+import { errorMsg, successMsg } from "../sevices/toastify";
 
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = () => {
 	const navigate = useNavigate();
 	const [users, setUsers] = useState<Users[]>([]);
-	const [isLogedIn, setisLogedIn] = useState<boolean>(false);
+	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
 
 	useEffect(() => {
 		getAllUsers("")
@@ -41,33 +42,32 @@ const Login: FunctionComponent<LoginProps> = () => {
 		onSubmit: (values) => {
 			const user = users.find(
 				(user) =>
-					values.email === user.email && values.password === user.password,
+					values.email.trim().toLowerCase() === user.email.trim().toLowerCase() &&
+					values.password === user.password,
 			);
-
+		
 			if (user) {
-				setisLogedIn(true);
-				console.log(isLogedIn);
-				console.log(isLogedIn);
-				return navigate("/home");
+				setIsLoggedIn(true);
+				successMsg("User logged in successfully");
+				navigate("/home");
 			} else {
-				setisLogedIn(false);
-				console.log(isLogedIn);
-				console.log(`Invalid email or password ,${values.email}`);
-				navigate("/");
+				setIsLoggedIn(false);
+				errorMsg("Invalid email or password");
+				console.log("Invalid email or password");
 			}
 		},
 	});
 
 	return (
 		<>
-			<div className='text-center pt-5 login mt-3' style={{maxWidth:"30rem"}} >
+			<div className='text-center fluid-container pt-5 login mt-5' style={{maxWidth:"30rem"}} >
 				<form onSubmit={formik.handleSubmit} className='d-flex flex-column p-5'>
 					<h1>LOGIN</h1>
 					<input
 						id='email'
 						type='email'
 						className='form-control mb-3 p-3'
-						placeholder='Username'
+						placeholder='Email'
 						onChange={formik.handleChange}
 						onBlur={formik.handleBlur}
 						value={formik.values.email}

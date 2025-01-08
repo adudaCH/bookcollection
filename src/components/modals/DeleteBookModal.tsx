@@ -5,7 +5,7 @@ interface DeleteModalProps {
     show: boolean;
     onHide: () => void;
     onDelete: () => void;
-    bookTitle: string; // To display the name of the book being deleted
+    bookTitle: string; // Display the name of the book being deleted
 }
 
 const DeleteModal: FunctionComponent<DeleteModalProps> = ({ show, onHide, onDelete, bookTitle }) => {

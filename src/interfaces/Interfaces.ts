@@ -11,7 +11,7 @@ import { string } from "yup";
 
 export interface Book {
     [x: string]: ReactNode;
-    id: string;
+    id?: string;
     title: string;
     author: string;
     genre: string;

@@ -19,6 +19,12 @@
       "name": "Adi Saadya",
       "email": "adis@gmail.com",
       "password": "123456789"
+    },
+    {
+      "id": "13bc",
+      "name": "nut",
+      "email": "nut@gmail.com",
+      "password": "123456"
     }
   ],
   "books": [
@@ -30,16 +36,6 @@
       "genre": "adventure"
     },
     {
-      "id": "2",
-      "title": "The Lord of the Rings",
-      "author": "J.R.R. Tolkien",
-      "price": 120,
-      "genre": "fantasy"
-    },
-    {
-      "id": "d4e4"
-    },
-    {
       "id": "26c3"
     },
     {
@@ -47,8 +43,7 @@
       "title": "The Psychology of Money",
       "author": "Morgan Housel",
       "genre": "crime",
-      "price": 300,
-      "available": true
+      "price": 300
     }
   ]
 }

@@ -10,31 +10,42 @@ const BooksTable: FunctionComponent = () => {
     const DeleteIcon = <FontAwesomeIcon icon={faTrash} />;
     const EditIcon = <FontAwesomeIcon icon={faPenFancy} />;
     const [books, setBooks] = useState<Book[]>([]);
-    const [showModal, setShowModal] = useState(false); // Controls modal visibility
-    const [selectedBook, setSelectedBook] = useState<Book | null>(null); // Tracks the book to delete
+    const [showModal, setShowModal] = useState(false); 
+    const [selectedBook, setSelectedBook] = useState<Book | null>(null); 
 
     // Fetch books on component mount
     useEffect(() => {
         getAllBooks()
             .then((res: any) => {
-                setBooks(res.data); // Update state with fetched books
+                console.log("Fetched books:", res.data); // Debug
+                setBooks(res.data); 
             })
             .catch((err: any) => {
                 console.error("Error fetching books:", err);
             });
     }, []);
 
-    // Handle delete confirmation
+    // Handle book deletion
     const handleDelete = () => {
         if (selectedBook) {
-            deleteBook(selectedBook.id) // Ensure you're passing the correct ID
+            console.log("Deleting book:", selectedBook); // Debug
+            deleteBook(selectedBook.id) 
                 .then((res) => {
-                    console.log("Delete response:", res.data); // Log the API response
+                    console.log("Delete response:", res.data); 
                     successMsg("Book deleted successfully!");
-                    // Update the state by filtering out the deleted book
-                    setBooks((prevBooks) => prevBooks.filter((book) => book.id !== selectedBook.id));
-                    setShowModal(false); // Close the modal
-                    setSelectedBook(null); // Clear the selected book
+
+                    // Update state to remove the deleted book
+                    setBooks((prevBooks) => {
+                        const updatedBooks = prevBooks.filter(
+                            (book) => book.id !== selectedBook.id
+                        );
+                        console.log("Updated books:", updatedBooks); // Debug
+                        return updatedBooks;
+                    });
+
+                    // Reset modal and selected book state
+                    setShowModal(false); 
+                    setSelectedBook(null); 
                 })
                 .catch((err) => {
                     errorMsg("Failed to delete the book.");
@@ -45,7 +56,7 @@ const BooksTable: FunctionComponent = () => {
 
     return (
         <>
-            <div className="">
+            <div>
                 <table className="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -70,8 +81,8 @@ const BooksTable: FunctionComponent = () => {
                                 <td>
                                     <button
                                         onClick={() => {
-                                            setSelectedBook(book); // Set the selected book
-                                            setShowModal(true); // Show the modal
+                                            setSelectedBook(book); 
+                                            setShowModal(true); 
                                         }}
                                         className="btn text-danger"
                                     >
@@ -88,9 +99,12 @@ const BooksTable: FunctionComponent = () => {
             {showModal && selectedBook && (
                 <DeleteModal
                     show={showModal}
-                    onHide={() => setShowModal(false)} // Close modal
-                    onDelete={handleDelete} // Call delete handler
-                    bookTitle={selectedBook.title} // Pass book title to display in the modal
+                    onHide={() => {
+                        setShowModal(false); 
+                        setSelectedBook(null);
+                    }} 
+                    onDelete={handleDelete} 
+                    bookTitle={selectedBook.title} 
                 />
             )}
         </>
