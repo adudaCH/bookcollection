@@ -27,11 +27,11 @@ const BooksTable: FunctionComponent = () => {
 
     // Handle book deletion
     const handleDelete = () => {
-        if (selectedBook) {
+        if (selectedBook && selectedBook.id) {
             console.log("Deleting book:", selectedBook); // Debug
-            deleteBook(selectedBook.id) 
+            deleteBook(selectedBook.id)
                 .then((res) => {
-                    console.log("Delete response:", res.data); 
+                    console.log("Delete response:", res.data);
                     successMsg("Book deleted successfully!");
 
                     // Update state to remove the deleted book
@@ -44,13 +44,14 @@ const BooksTable: FunctionComponent = () => {
                     });
 
                     // Reset modal and selected book state
-                    setShowModal(false); 
-                    setSelectedBook(null); 
+                    setShowModal(false);
+                    setSelectedBook(null);
                 })
                 .catch((err) => {
-                    errorMsg("Failed to delete the book.");
-                    console.error("Error deleting book:", err);
+                    console.error("Failed to delete book:", err);
                 });
+        } else {
+            console.error("Selected book or book ID is undefined");
         }
     };
 

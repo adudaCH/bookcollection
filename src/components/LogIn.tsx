@@ -62,7 +62,7 @@ const Login: FunctionComponent<LoginProps> = () => {
 		<>
 			<div className='text-center fluid-container pt-5 login mt-5' style={{maxWidth:"30rem"}} >
 				<form onSubmit={formik.handleSubmit} className='d-flex flex-column p-5'>
-					<h1>LOGIN</h1>
+					<h1 className="carter-one-regular">LOGIN</h1>
 					<input
 						id='email'
 						type='email'
@@ -93,7 +93,7 @@ const Login: FunctionComponent<LoginProps> = () => {
 						logIn
 					</button>
 				</form>
-				<h5 className='card-text my-3'>
+				<h5 className='my-3' style={{fontFamily: "calibri"}}>
 					new here?
 					<Link to={"/registry"}>
 						<span className=' text-primary p-3'>Register</span>

@@ -25,6 +25,12 @@
       "name": "nut",
       "email": "nut@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "610c",
+      "name": "apple",
+      "email": "apple@gmail.com",
+      "password": "AZ123456"
     }
   ],
   "books": [

@@ -66,7 +66,7 @@ const Registry: FunctionComponent<RegistryProps> = () => {
 				onSubmit={formik.handleSubmit}
 				className='d-flex flex-column p-3'
 			>
-				<h1 className=" p-3">REGISTRY</h1>
+				<h1 className="carter-one-regular p-3">REGISTRY</h1>
 				<input
 					id='name'
 					type='name'
