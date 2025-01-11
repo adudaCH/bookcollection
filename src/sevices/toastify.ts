@@ -6,15 +6,15 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 export function successMsg(msg: string) {
-	toast.success('🦄 Wow so easy!', {
+	toast.success(msg, {
 position: "top-center",
-autoClose: 5000,
+autoClose: 3000,
 hideProgressBar: false,
 closeOnClick: true,
 pauseOnHover: true,
 draggable: true,
 progress: undefined,
-theme: "green",
+theme: "colored",
 });
 }
 
@@ -22,7 +22,7 @@ theme: "green",
 export function errorMsg(msg: string) {
 	toast.error(msg, {
 		position: "top-center",
-		autoClose: 6000,
-		theme: "red",
+		autoClose: 4000,
+		theme: "colored",
 	});
 }

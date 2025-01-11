@@ -3,32 +3,31 @@ import axios from "axios";
 import { Book } from "../interfaces/Interfaces";
 
 const api: string = `${process.env.REACT_APP_API}/books`;
+const booksArray: Book[] = [];
 
 // get all books from 
 export function getAllBooks(){
-    return axios.get(`${api}/books`)
+    return axios.get(`${api}/books`);
 }
 
-// export function postBook(bookData: Book) {
-//     return axios.post(`${api}/books` );
-// }
-
-
-export const postBook = async (book: Book) => {
-    try {
-        console.log("Payload sent to API:", book); // Log the payload
-        const response = await axios.post(`${api}/books`, book); // Replace with your endpoint
-        console.log("API response:", response.data); // Log the API response
-        return response;
-    } catch (error) {
-        console.error("Error posting book:", error);
-        throw error;
-    }
-};
-
-export function addBook(arg0: Book) {
-    throw new Error("Function not implemented.");
+export function postBook(bookData: Book) {
+    return axios.post(`${api}/books`, bookData); // Pass `bookData` as the payload
 }
+
+
+
+// export const postBook = async (book: Book) => {
+//     try {
+//         console.log("Payload sent to API:", book); // Log the payload
+//         const response = await axios.post(`${api}/books`, book); // Replace with your endpoint
+//         console.log("API response:", response.data); // Log the API response
+//         return response;
+//     } catch (error) {
+//         console.error("Error posting book:", error);
+//         throw error;
+//     }
+// };
+
 
 export const deleteBook = (id: string) => {
     return axios.delete(` ${api}/${id}`); 

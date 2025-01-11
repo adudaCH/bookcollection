@@ -41,7 +41,7 @@ const AddNewBook: FunctionComponent = () => {
                 const bookPayload = { ...values, available: true }; // Include additional fields
                 console.log("Submitting book:", bookPayload); // Log the payload
                 await postBook(bookPayload); // Call the API
-                successMsg("Book added successfully! 😊");
+                successMsg(`${values.title}added successfully 🥳`);
                 formik.resetForm(); // Clear the form
                 navigate("/books"); // Navigate to books list
             } catch (err) {

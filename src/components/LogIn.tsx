@@ -48,11 +48,11 @@ const Login: FunctionComponent<LoginProps> = () => {
 		
 			if (user) {
 				setIsLoggedIn(true);
-				successMsg("User logged in successfully");
+				successMsg(`Welcome ${user.name}, good to have you back 🥳`);
 				navigate("/home");
 			} else {
 				setIsLoggedIn(false);
-				errorMsg("Invalid email or password");
+				errorMsg("Invalid email or password 🫣");
 				console.log("Invalid email or password");
 			}
 		},

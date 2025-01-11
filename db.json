@@ -31,6 +31,12 @@
       "name": "apple",
       "email": "apple@gmail.com",
       "password": "AZ123456"
+    },
+    {
+      "id": "ac9d",
+      "name": "aduda",
+      "email": "aduda@gmail.com",
+      "password": "A123456"
     }
   ],
   "books": [

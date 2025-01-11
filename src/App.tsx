@@ -8,6 +8,7 @@ import Home from './components/Home';
 import AddNewBook from './components/AddNewBook';
 import BooksTable from './components/BooksTable';
 import Registry from './components/Registry';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -19,15 +20,15 @@ import Registry from './components/Registry';
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Router>
         <Navbar logIn={false} />
         <Routes>
           <Route path="/" element={<LogIn />} />
           <Route path="/home" element={<Home />} />
           <Route path="/registry" element={<Registry />} />
-          <Route path="/addNewBook" element={<AddNewBook/>} />
+          <Route path="/addNewBook" element={<AddNewBook />} />
           <Route path="/books" element={<BooksTable />} />
-
         </Routes>
       </Router>
     </div>
