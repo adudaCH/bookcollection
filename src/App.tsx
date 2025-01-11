@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -13,13 +13,19 @@ import { ToastContainer } from 'react-toastify';
 
 
 
-
-
-
-
 function App() {
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    return savedTheme ? JSON.parse(savedTheme) : false;
+});
+
+const toggleTheme = () => {
+    setTheme((prevTheme: any) => !prevTheme);
+};
+
   return (
-    <div className="App">
+    <div className="App" id='light'>
+      {/* <ThemeContext.Provider value={{ type: 'light', switchTheme: () => {} }}> */}
       <ToastContainer />
       <Router>
         <Navbar logIn={false} />
@@ -31,6 +37,7 @@ function App() {
           <Route path="/books" element={<BooksTable />} />
         </Routes>
       </Router>
+      {/* </ThemeContext.Provider> */}
     </div>
   );
 }

@@ -56,8 +56,8 @@ const BooksTable: FunctionComponent = () => {
 
     return (
         <>
-            <div>
-                <h2 className="text-center my-4">Books List</h2>
+            <div className="fluid-container">
+                <h2 className="text-center carter-one-regular my-4">Books List</h2>
                 <table className="table table-striped table-hover">
                     <thead>
                         <tr>

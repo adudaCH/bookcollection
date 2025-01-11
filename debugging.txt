@@ -1,0 +1,16 @@
+debugging:
+navBar: 
+        doest show theme switcher .
+        doest show user name & logout btn when login.
+
+addNewBook:
+            doest add the book to the tale.
+
+
+bookTale:
+            doest show the book list
+            delete modal doest work
+            need to add a edit book component
+
+theme:
+        see why the theme doest apply to the app 
