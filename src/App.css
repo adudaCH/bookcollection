@@ -1,26 +1,6 @@
-.navbar{
-  align-content: center;
-  justify-content: center;
-  background-color:#aed9ff !important;
-
-  height: 10vh;
-
-}
-.login {
-  margin-left: 600px;
-  background: rgba(255, 255, 255, 0.13);
-  border-radius: 16px;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-  -webkit-backdrop-filter: blur(3.4px);
-  backdrop-filter: blur(3px);
-  border: 1px solid rgba(255, 255, 255, 0.473);
-  & input {
-    filter: blur(0px);
-  }
-}
-
 .carter-one-regular {
   font-family: "Carter One", serif;
   font-weight: 400;
   font-style: normal;
 }
+

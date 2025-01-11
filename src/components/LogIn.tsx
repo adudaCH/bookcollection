@@ -5,6 +5,7 @@ import {Link, useNavigate} from "react-router-dom";
 import { getAllUsers } from "../sevices/userService";
 import { Users } from "../interfaces/Interfaces";
 import { errorMsg, successMsg } from "../sevices/toastify";
+import "../styleSheet/login.css";
 
 interface LoginProps {}
 

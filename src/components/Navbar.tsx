@@ -1,10 +1,13 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
-import { getAllUsers } from "../sevices/userService"; // Update the path as per your project structure.
+import { getAllUsers } from "../sevices/userService"; 
 import { Button } from "react-bootstrap";
 import { ThemeContext } from "../sevices/darkLightTheme";
 import "../styleSheet/themeToggle.css";
+import "../styleSheet/navbar.css";
+import { Users } from "../interfaces/Interfaces";
+
 
 interface NavbarProps {
     logIn: boolean;
@@ -12,7 +15,7 @@ interface NavbarProps {
 
 const Navbar: FunctionComponent<NavbarProps> = ({ logIn }) => {
     const email = sessionStorage.getItem("userEmail");
-    // const [users, setUsers] = useState<{ name: string }[]>([]);
+    const [users, setUsers] = useState<Users[]>([])
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(
         sessionStorage.getItem("loggedIn") === "true"
     );
@@ -24,6 +27,16 @@ const Navbar: FunctionComponent<NavbarProps> = ({ logIn }) => {
             setIsLoggedIn(true);
         }
     }, [logIn]);
+
+    useEffect(() => {
+		getAllUsers("")
+			.then((res) => {
+				setUsers(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	}, []);
 
     const handleLogout = () => {
         sessionStorage.removeItem("userEmail");
@@ -48,7 +61,7 @@ const Navbar: FunctionComponent<NavbarProps> = ({ logIn }) => {
                 {isLoggedIn && (
                     <ul className="navbar-nav text-dark mt-2 d-flex">
                         <li className="nav-item">
-                            <h5 className="card-title">{email || ""}</h5>
+                            <h5 className="card-title">{users.length > 0 ? `hello ${users[0].email}` : ""}</h5>
                         </li>
                         <li>
                             <Button className="switch">
