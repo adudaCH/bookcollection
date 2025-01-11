@@ -23,5 +23,6 @@ export function errorMsg(msg: string) {
 	toast.error(msg, {
 		position: "top-center",
 		autoClose: 6000,
+		theme: "red",
 	});
 }
