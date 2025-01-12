@@ -1,10 +1,16 @@
 import { faPenFancy, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { Book } from "../interfaces/Interfaces";
 import DeleteModal from "./modals/DeleteBookModal";
-import { deleteBook, getAllBooks } from "../sevices/bookService";
+import {
+    deleteBook,
+    getAllBooks,
+    getBookById,
+    updateBook,
+} from "../sevices/bookService";
 import { errorMsg, successMsg } from "../sevices/toastify";
+import { BookContext } from "./context/bookContext";
 
 const BooksTable: FunctionComponent = () => {
     const DeleteIcon = <FontAwesomeIcon icon={faTrash} />;
@@ -12,8 +18,8 @@ const BooksTable: FunctionComponent = () => {
     const [books, setBooks] = useState<Book[]>([]); // State for books
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const [selectedBook, setSelectedBook] = useState<Book | null>(null); // Selected book for deletion
+    const { book, setBook } = useContext(BookContext) || {};
 
-    // Fetch books on component mount
     useEffect(() => {
         const fetchBooks = async () => {
             try {
@@ -28,6 +34,22 @@ const BooksTable: FunctionComponent = () => {
 
         fetchBooks();
     }, []);
+    const handleEdit = async (bookId: string) => {
+        if (bookId) {
+            try {
+                const res = await getBookById(bookId); // Call get book API
+                if (setBook) {
+                    setBook(res.data);
+                }
+
+                console.log("Fetched book to edit:", res.data); // Debug the response
+                setSelectedBook(res.data); // Set the selected book
+            } catch (err) {
+                errorMsg("Failed to edit the book. Please try again.");
+            }
+            console.log("Editing book:", bookId); // Debug selected book
+        }
+    };
 
     // Handle book deletion
     const handleDelete = async () => {
@@ -57,7 +79,9 @@ const BooksTable: FunctionComponent = () => {
     return (
         <>
             <div className="fluid-container">
-                <h2 className="text-center carter-one-regular my-4">Books List</h2>
+                <h2 className="text-center carter-one-regular my-4">
+                    Books List
+                </h2>
                 <table className="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -73,14 +97,22 @@ const BooksTable: FunctionComponent = () => {
                     <tbody>
                         {books.length > 0 ? (
                             books.map((book, index) => (
-                                <tr key={book.id || index}> {/* Ensure `key` is unique */}
+                                <tr key={book.id}>
+                                    {" "}
+                                    {/* Ensure `key` is unique */}
                                     <td>{index + 1}</td>
                                     <td>{book.title}</td>
                                     <td>{book.author}</td>
                                     <td>{book.genre}</td>
                                     <td>₪{book.price}</td>
                                     <td className="text-warning">
-                                        <button className="btn btn-link">
+                                        <button
+                                            className="btn text-warning"
+                                            onClick={() =>
+                                                book && book.id
+                                                    ? handleEdit(book.id)
+                                                    : null
+                                            }>
                                             {EditIcon}
                                         </button>
                                     </td>
@@ -90,8 +122,7 @@ const BooksTable: FunctionComponent = () => {
                                                 setSelectedBook(book); // Set selected book
                                                 setShowModal(true); // Show modal
                                             }}
-                                            className="btn text-danger"
-                                        >
+                                            className="btn text-danger">
                                             {DeleteIcon}
                                         </button>
                                     </td>

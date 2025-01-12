@@ -15,7 +15,7 @@ const DeleteModal: FunctionComponent<DeleteModalProps> = ({ show, onHide, onDele
                 <Modal.Title>Delete Book</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                Are you sure you want to delete the book <strong>{bookTitle}</strong>?
+             Are you sure you want to delete <strong>{bookTitle}</strong>?
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={onHide}>

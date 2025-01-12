@@ -1,17 +1,23 @@
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPlus, faSave } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormik, FormikValues } from "formik";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useContext, useEffect, useState } from "react";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { Book } from "../interfaces/Interfaces";
 import { postBook } from "../sevices/bookService";
 import { errorMsg, successMsg } from "../sevices/toastify";
+import { BookContext } from "./context/bookContext";
 
 const AddNewBook: FunctionComponent = () => {
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const { book, setBook } = useContext(BookContext) || {};
 
+    useEffect(() => {
+        console.log(book);
+    });
+        const isEditing = !!book;
     const formik: FormikValues = useFormik<Book>({
         initialValues: {
             title: "",
@@ -57,10 +63,8 @@ const AddNewBook: FunctionComponent = () => {
         <form
             onSubmit={formik.handleSubmit}
             className="mx-auto mt-3"
-            style={{ maxWidth: "25rem" }}
-        >
+            style={{ maxWidth: "25rem" }}>
             <h1 className="text-center carter-one-regular">Add New Book</h1>
-
 
             <div className="mb-3">
                 <input
@@ -68,18 +72,21 @@ const AddNewBook: FunctionComponent = () => {
                     name="title"
                     type="text"
                     className={`form-control ${
-                        formik.touched.title && formik.errors.title ? "is-invalid" : ""
+                        formik.touched.title && formik.errors.title
+                            ? "is-invalid"
+                            : ""
                     }`}
                     placeholder="Enter book title"
-                    value={formik.values.title}
+                    value={book && book.title? book.title: formik.values.title}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
                 {formik.touched.title && formik.errors.title && (
-                    <div className="invalid-feedback">{formik.errors.title}</div>
+                    <div className="invalid-feedback">
+                        {formik.errors.title}
+                    </div>
                 )}
             </div>
-
 
             <div className="mb-3">
                 <input
@@ -87,15 +94,19 @@ const AddNewBook: FunctionComponent = () => {
                     name="author"
                     type="text"
                     className={`form-control ${
-                        formik.touched.author && formik.errors.author ? "is-invalid" : ""
+                        formik.touched.author && formik.errors.author
+                            ? "is-invalid"
+                            : ""
                     }`}
                     placeholder="Enter author name"
-                    value={formik.values.author}
+                    value={book && book.author? book.author: formik.values.author}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
                 {formik.touched.author && formik.errors.author && (
-                    <div className="invalid-feedback">{formik.errors.author}</div>
+                    <div className="invalid-feedback">
+                        {formik.errors.author}
+                    </div>
                 )}
             </div>
 
@@ -105,12 +116,13 @@ const AddNewBook: FunctionComponent = () => {
                     id="genre"
                     name="genre"
                     className={`form-control ${
-                        formik.touched.genre && formik.errors.genre ? "is-invalid" : ""
+                        formik.touched.genre && formik.errors.genre
+                            ? "is-invalid"
+                            : ""
                     }`}
-                    value={formik.values.genre}
+                    value={book && book.genre? book.genre: formik.values.genre}
                     onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                >
+                    onBlur={formik.handleBlur}>
                     <option value="" label="Select genre" />
                     <option value="fantasy" label="Fantasy" />
                     <option value="adventure" label="Adventure" />
@@ -118,7 +130,9 @@ const AddNewBook: FunctionComponent = () => {
                     <option value="crime" label="Crime" />
                 </select>
                 {formik.touched.genre && formik.errors.genre && (
-                    <div className="invalid-feedback">{formik.errors.genre}</div>
+                    <div className="invalid-feedback">
+                        {formik.errors.genre}
+                    </div>
                 )}
             </div>
 
@@ -129,26 +143,42 @@ const AddNewBook: FunctionComponent = () => {
                     name="price"
                     type="number"
                     className={`form-control ${
-                        formik.touched.price && formik.errors.price ? "is-invalid" : ""
+                        formik.touched.price && formik.errors.price
+                            ? "is-invalid"
+                            : ""
                     }`}
                     placeholder="Enter book price"
-                    value={formik.values.price}
+                    value={book && book.price? book.price:formik.values.price}
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                 />
                 {formik.touched.price && formik.errors.price && (
-                    <div className="invalid-feedback">{formik.errors.price}</div>
+                    <div className="invalid-feedback">
+                        {formik.errors.price}
+                    </div>
                 )}
             </div>
 
             <button
-                type="submit"
-                className="btn btn-success w-100 d-flex align-items-center justify-content-center"
-                disabled={isSubmitting}
-            >
-                <FontAwesomeIcon icon={faPlus} className="me-2" />
-                {isSubmitting ? "Adding..." : "Add"}
-            </button>
+        type="submit"
+        className={`btn w-100 d-flex align-items-center justify-content-center ${
+            isEditing ? "btn-warning" : "btn-success"
+        }`}
+        disabled={isSubmitting}>
+        <FontAwesomeIcon
+            icon={isEditing ? faSave : faPlus}
+            className="me-2"
+        />
+        {isSubmitting
+            ? isEditing
+                ? "Saving..."
+                : "Adding..."
+            : isEditing
+            ? "Save"
+            : "Add"}
+    </button>
+            
+                    <button className="btn btn-secondary mt-3">cancel</button>
         </form>
     );
 };

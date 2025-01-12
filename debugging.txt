@@ -5,11 +5,11 @@ navBar:
 
 addNewBook:
             doest add the book to the tale.
+            fix the entire editing process
 
 
 bookTale:
-            doest show the book list
-            delete modal doest work
+           
             need to add a edit book component
 
 theme:

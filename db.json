@@ -1,61 +1,58 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "firstName": "Adi",
-      "lastName": "Saadya",
-      "email": "adisaadya@gmail.com",
-      "password": "Aa12345"
-    },
-    {
-      "id": "2",
-      "firstName": "Margalit",
-      "lastName": "Tezanani",
-      "email": "margol@gmail.com",
-      "password": "Bb123456"
-    },
-    {
-      "id": "39b7",
-      "name": "Adi Saadya",
-      "email": "adis@gmail.com",
-      "password": "123456789"
-    },
-    {
-      "id": "13bc",
-      "name": "nut",
-      "email": "nut@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "610c",
-      "name": "apple",
-      "email": "apple@gmail.com",
-      "password": "AZ123456"
-    },
-    {
-      "id": "ac9d",
-      "name": "aduda",
-      "email": "aduda@gmail.com",
-      "password": "A123456"
-    }
-  ],
-  "books": [
-    {
-      "id": "1",
-      "title": "Harry Potter",
-      "author": "J.K. Rowling",
-      "price": 140,
-      "genre": "adventure"
-    },
-    {
-      "id": "26c3"
-    },
-    {
-      "id": "",
-      "title": "The Psychology of Money",
-      "author": "Morgan Housel",
-      "genre": "crime",
-      "price": 300
-    }
-  ]
+    "users": [
+        {
+            "id": "1",
+            "firstName": "Adi",
+            "lastName": "Saadya",
+            "email": "adisaadya@gmail.com",
+            "password": "Aa12345"
+        },
+        {
+            "id": "2",
+            "firstName": "Margalit",
+            "lastName": "Tezanani",
+            "email": "margol@gmail.com",
+            "password": "Bb123456"
+        },
+        {
+            "id": "39b7",
+            "name": "Adi Saadya",
+            "email": "adis@gmail.com",
+            "password": "123456789"
+        },
+        {
+            "id": "13bc",
+            "name": "nut",
+            "email": "nut@gmail.com",
+            "password": "123456"
+        },
+        {
+            "id": "610c",
+            "name": "apple",
+            "email": "apple@gmail.com",
+            "password": "AZ123456"
+        },
+        {
+            "id": "ac9d",
+            "name": "aduda",
+            "email": "aduda@gmail.com",
+            "password": "A123456"
+        }
+    ],
+    "books": [
+        {
+            "id": "1",
+            "title": "Harry Potter",
+            "author": "J.K. Rowling",
+            "price": 140,
+            "genre": "adventure"
+        },
+        {
+            "id": "2",
+            "title": "The Psychology of Money",
+            "author": "Morgan Housel",
+            "genre": "crime",
+            "price": 300
+        }
+    ]
 }

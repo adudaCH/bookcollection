@@ -17,3 +17,4 @@ export interface Book {
     genre: string;
     price: number;
 }
+

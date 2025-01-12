@@ -18,7 +18,7 @@ const Home: FunctionComponent<HomeProps> = () => {
         }}>
     <div className="d-flex justify-content-around mt-5 container-fluid">
     <div className=""><AddNewBook/></div>
-    <div className="">  <BooksTable/></div>
+    <div className=""><BooksTable/></div>
     </div>
     </main> );
 }
