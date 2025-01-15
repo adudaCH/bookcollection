@@ -2,11 +2,12 @@ import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { FaMoon } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getAllUsers } from "../sevices/userService"; 
-import { Button } from "react-bootstrap";
+import { Button, Form, Nav, Navbar as BootstrapNavbar, Container } from "react-bootstrap";
 import { ThemeContext } from "../sevices/darkLightTheme";
-import "../styleSheet/themeToggle.css";
 import "../styleSheet/navbar.css";
 import { Users } from "../interfaces/Interfaces";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 interface NavbarProps {
@@ -50,35 +51,42 @@ const Navbar: FunctionComponent<NavbarProps> = ({ logIn }) => {
     }
 
     return (
-        <nav className="navbar bg-body-tertiary">
-            <div className="container-fluid">
-                <NavLink
-                    className="navbar-brand me-5 carter-one-regular"
-                    to="/">
+
+<BootstrapNavbar bg="light" expand="lg">
+            <Container>
+                <BootstrapNavbar.Brand as={NavLink} to="/" className="library carter-one-regular">
                     Library
-                </NavLink>
-                <hr />
-                {isLoggedIn && (
-                    <ul className="navbar-nav text-dark mt-2 d-flex">
-                        <li className="nav-item">
-                            <h5 className="card-title">{users.length > 0 ? `hello ${users[0].email}` : ""}</h5>
-                        </li>
-                        <li>
-                            <Button className="switch">
-                                <input type="checkbox" />
-                                <span className="slider round"></span>
-                            </Button>
-                            <button
-                                onClick={handleLogout}
-                                className="btn btn-outline-danger">
-                                Log Out
-                            </button>
-                        </li>
-                    </ul>
-                )}
-            </div>
-        </nav>
-    );
+                </BootstrapNavbar.Brand>
+                <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
+                <BootstrapNavbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                    </Nav>
+                    <Form className="d-flex align-items-center">
+                        <div className="form-check form-switch me-3">
+                        <Button
+                            style={{ color: theme.color }}
+                            className="navIcon"
+                            onClick={() => changeMode()}>
+                            <FaMoon className="navIcon" />
+                        </Button>
+                        </div>
+                        {isLoggedIn && (
+                            <div className="d-flex align-items-center">
+                                <h5 className="title me-3">
+                                    {users.length > 0 ? `Hello ${users[0].email}` : ""}
+                                </h5>
+                                <button
+                                    onClick={handleLogout}
+                                    className="btn btn-outline-danger">
+                                    Log Out
+                                </button>
+                            </div>
+                        )}
+                    </Form>
+                </BootstrapNavbar.Collapse>
+            </Container>
+        </BootstrapNavbar>    
+        );
 };
 
 export default Navbar;
