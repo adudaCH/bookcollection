@@ -3,24 +3,33 @@ import BooksTable from "./BooksTable";
 import AddNewBook from "./AddNewBook";
 import { ThemeContext } from "../sevices/darkLightTheme";
 
-interface HomeProps {
-    
-}
+interface HomeProps {}
 
 const Home: FunctionComponent<HomeProps> = () => {
-        const theme = useContext(ThemeContext);
-    
-    return ( <main
-        style={{
-            backgroundColor: theme.background,
-            color: theme.color,
-            minHeight: "100vh",
-        }}>
-    <div className="d-flex justify-content-around mt-5 container-fluid">
-    <div className=""><AddNewBook/></div>
-    <div className=""><BooksTable/></div>
-    </div>
-    </main> );
-}
+    const theme = useContext(ThemeContext);
+
+    return (
+        <main
+            style={{
+                backgroundColor: theme.background,
+                color: theme.color,
+                minHeight: "100vh",
+            }}>
+            <div className="container-fluid">
+                <div className="row mt-5">
+
+                    <div className="col-12 col-md-4 mb-4 mb-md-0">
+                        <AddNewBook />
+                    </div>
+
+
+                    <div className="col-12 col-md-8">
+                        <BooksTable />
+                    </div>
+                </div>
+            </div>
+        </main>
+    );
+};
 
 export default Home;

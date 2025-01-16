@@ -4,13 +4,12 @@ navBar:
         doest show user name & logout btn when login.
 
 addNewBook:
-            doest add the book to the tale.
-            fix the entire editing process
+         doest render the bookTale component 
 
 
-bookTale:
-           
-            need to add a edit book component
 
 theme:
         see why the theme doest apply to the app 
+
+responsive:
+                tablet only        

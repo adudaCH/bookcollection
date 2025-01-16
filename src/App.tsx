@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -10,6 +10,7 @@ import BooksTable from "./components/BooksTable";
 import Registry from "./components/Registry";
 import { ToastContainer } from "react-toastify";
 import { BookProvider } from "./components/context/bookContext";
+import { BooksProvider } from "./components/context/booksContext";
 import { ThemeContext } from "./sevices/darkLightTheme";
 
 function App() {
@@ -22,14 +23,19 @@ function App() {
         setTheme((prevTheme: any) => !prevTheme);
     };
 
+    useEffect(() => {
+        localStorage.setItem("theme", JSON.stringify(theme));
+        document.body.className = theme ? "dark" : "light"; 
+    }, [theme]);
+
     return (
         <div className="App" >
-            {/* <ThemeContext.Provider> */}
-
+            <ThemeContext.Provider value={{ background: theme ? "dark" : "light", color: theme ? "white" : "black" }}>
             <ToastContainer />
+            <BooksProvider>
             <BookProvider>
                 <Router>
-                    <Navbar logIn={false} />
+                    <Navbar logIn={false} changeMode={toggleTheme} />
                     <Routes>
                         <Route path="/" element={<LogIn />} />
                         <Route path="/home" element={<Home />} />
@@ -39,7 +45,8 @@ function App() {
                     </Routes>
                 </Router>
             </BookProvider>
-            {/* </ThemeContext.Provider> */}
+            </BooksProvider>
+            </ThemeContext.Provider>
         </div>
     );
 }

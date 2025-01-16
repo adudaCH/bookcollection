@@ -19,17 +19,6 @@ export function getBookById(id: string) {
 }
 
 
-// export const postBook = async (book: Book) => {
-//     try {
-//         console.log("Payload sent to API:", book); // Log the payload
-//         const response = await axios.post(`${api}/books`, book); // Replace with your endpoint
-//         console.log("API response:", response.data); // Log the API response
-//         return response;
-//     } catch (error) {
-//         console.error("Error posting book:", error);
-//         throw error;
-//     }
-// };
 
 export const deleteBook = (id: string) => {
     return axios.delete(`${api}/books/${id}`);

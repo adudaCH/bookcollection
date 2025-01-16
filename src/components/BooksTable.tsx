@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { Book } from "../interfaces/Interfaces";
 import DeleteModal from "./modals/DeleteBookModal";
+import "../styleSheet/bookList.css";
 import {
     deleteBook,
     getAllBooks,
@@ -11,21 +12,25 @@ import {
 } from "../sevices/bookService";
 import { errorMsg, successMsg } from "../sevices/toastify";
 import { BookContext } from "./context/bookContext";
+import { BooksContext } from "./context/booksContext";
 
 const BooksTable: FunctionComponent = () => {
     const DeleteIcon = <FontAwesomeIcon icon={faTrash} />;
     const EditIcon = <FontAwesomeIcon icon={faPenFancy} />;
-    const [books, setBooks] = useState<Book[]>([]); // State for books
+    // const [books, setBooks] = useState<Book[]>([]); // State for books
     const [showModal, setShowModal] = useState(false); // Modal visibility state
     const [selectedBook, setSelectedBook] = useState<Book | null>(null); // Selected book for deletion
     const { book, setBook } = useContext(BookContext) || {};
+    const { books, setBooks } = useContext(BooksContext) || {};
 
     useEffect(() => {
         const fetchBooks = async () => {
             try {
                 const res = await getAllBooks(); // Call to service
                 console.log("Fetched books:", res.data); // Debug the response
-                setBooks(res.data); // Set the books to state
+                if (setBooks) {
+                    setBooks(res.data); // Set the books to state
+                }
             } catch (err) {
                 console.error("Error fetching books:", err);
                 errorMsg("Failed to fetch books. Please try again.");
@@ -60,9 +65,10 @@ const BooksTable: FunctionComponent = () => {
                 successMsg("Book deleted successfully!");
 
                 // Update state to remove the deleted book
-                setBooks((prevBooks) =>
-                    prevBooks.filter((book) => book.id !== selectedBook.id)
-                );
+                if (setBooks)
+                    setBooks((prevBooks) =>
+                        prevBooks.filter((book) => book.id !== selectedBook.id)
+                    );
 
                 // Reset modal and selected book state
                 setShowModal(false);
@@ -78,7 +84,7 @@ const BooksTable: FunctionComponent = () => {
 
     return (
         <>
-            <div className="fluid-container">
+            <div className="fluid-container bookList">
                 <h2 className="text-center carter-one-regular my-4">
                     Books List
                 </h2>
@@ -95,7 +101,7 @@ const BooksTable: FunctionComponent = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {books.length > 0 ? (
+                        {books && books?.length > 0 ? (
                             books.map((book, index) => (
                                 <tr key={book.id}>
                                     {" "}

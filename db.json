@@ -1,65 +1,201 @@
 {
-    "users": [
-        {
-            "id": "1",
-            "firstName": "Adi",
-            "lastName": "Saadya",
-            "email": "adisaadya@gmail.com",
-            "password": "Aa12345"
-        },
-        {
-            "id": "2",
-            "firstName": "Margalit",
-            "lastName": "Tezanani",
-            "email": "margol@gmail.com",
-            "password": "Bb123456"
-        },
-        {
-            "id": "39b7",
-            "name": "Adi Saadya",
-            "email": "adis@gmail.com",
-            "password": "123456789"
-        },
-        {
-            "id": "13bc",
-            "name": "nut",
-            "email": "nut@gmail.com",
-            "password": "123456"
-        },
-        {
-            "id": "610c",
-            "name": "apple",
-            "email": "apple@gmail.com",
-            "password": "AZ123456"
-        },
-        {
-            "id": "ac9d",
-            "name": "aduda",
-            "email": "aduda@gmail.com",
-            "password": "A123456"
-        }
-    ],
-    "books": [
-        {
-            "id": "1",
-            "title": "Harry Potter",
-            "author": "J.K. Rowling",
-            "price": 140,
-            "genre": "adventure"
-        },
-        {
-            "id": "2",
-            "title": "The Psychology of Money",
-            "author": "Morgan Housel",
-            "genre": "crime",
-            "price": 300
-        },
-        {
-            "id": "3",
-            "title": "Good Vibes, Good Life",
-            "author": "Vex King",
-            "genre": "fantasy",
-            "price": 150
-        }
-    ]
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Adi",
+      "lastName": "Saadya",
+      "email": "adisaadya@gmail.com",
+      "password": "Aa12345"
+    },
+    {
+      "id": "2",
+      "firstName": "Margalit",
+      "lastName": "Tezanani",
+      "email": "margol@gmail.com",
+      "password": "Bb123456"
+    },
+    {
+      "id": "39b7",
+      "name": "Adi Saadya",
+      "email": "adis@gmail.com",
+      "password": "123456789"
+    },
+    {
+      "id": "13bc",
+      "name": "nut",
+      "email": "nut@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "610c",
+      "name": "apple",
+      "email": "apple@gmail.com",
+      "password": "AZ123456"
+    },
+    {
+      "id": "ac9d",
+      "name": "aduda",
+      "email": "aduda@gmail.com",
+      "password": "A123456"
+    },
+    {
+      "id": "70e2",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "291e",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "be6c",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "0b8c",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "9ddd",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "3eb8",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "b9ed",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "09df",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "22d6",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "d196",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "9d84",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "8f80",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "0347",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "5071",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "b5f4",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "0ad4",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "7a61",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "210c",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "6173",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "1dd1",
+      "email": "",
+      "name": "",
+      "password": ""
+    },
+    {
+      "id": "29cc",
+      "email": "",
+      "name": "",
+      "password": ""
+    }
+  ],
+  "books": [
+    {
+      "id": "1",
+      "title": "Harry Potter",
+      "author": "J.K. Rowling",
+      "price": 140,
+      "genre": "adventure"
+    },
+    {
+      "id": "df0aefa7-93bf-4de0-9ea6-c49e3bbe8dd7",
+      "title": "dont mess with me",
+      "author": "aduda",
+      "genre": "crime",
+      "price": "150",
+      "available": true
+    },
+    {
+      "id": "3",
+      "author": "Vex King",
+      "title": "Good Vibes, Good Life",
+      "genre": "fantasy",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": "2",
+      "title": "The Psychology of Moneyrtyu",
+      "author": "Morgan Housel",
+      "genre": "crime",
+      "price": 300,
+      "available": true
+    }
+  ]
 }

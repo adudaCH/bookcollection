@@ -29,4 +29,3 @@ export const BookProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
-// export const bookContext = createContext<{ book: Book; setBook: React.Dispatch<React.SetStateAction<Book>> } | undefined>(undefined); // Create context for books
