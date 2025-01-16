@@ -11,7 +11,7 @@ import Registry from "./components/Registry";
 import { ToastContainer } from "react-toastify";
 import { BookProvider } from "./components/context/bookContext";
 import { BooksProvider } from "./components/context/booksContext";
-import { ThemeContext } from "./sevices/darkLightTheme";
+import { ThemeContext, ThemeProvider } from "./sevices/darkLightTheme";
 
 function App() {
     const [theme, setTheme] = useState(() => {
@@ -30,7 +30,7 @@ function App() {
 
     return (
         <div className="App" >
-            <ThemeContext.Provider value={{ background: theme ? "dark" : "light", color: theme ? "white" : "black" }}>
+            <ThemeContext.Provider value={{ background: theme ? "dark" : "light", color: theme ? "white" : "black", toggleTheme }}>
             <ToastContainer />
             <BooksProvider>
             <BookProvider>

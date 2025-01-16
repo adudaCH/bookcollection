@@ -1,8 +1,22 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
+
+export const ThemeContext = createContext({
+    background: "white",
+    color: "black",
+    toggleTheme: () => {},
+});
 
 export const themeMode = {
-    dark: { background: "#191919", color: "white" },
-    light: { background: " rgb(55, 198, 224)", color: "black" }
+    dark: { background: "black", color: "white" },
+    light: { background: "white", color: "black" },
+    toggleTheme: () => {},
 };
+export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
+    const [isDarkMode, setIsDarkMode] = useState(false);
 
-export const ThemeContext = createContext(themeMode.dark);
+    const toggleTheme = () => setIsDarkMode(!isDarkMode);
+
+    const theme = isDarkMode
+        ? { background: "#000000", color: "#ffffff" } // Dark mode
+        : { background: "#ffffff", color: "#000000" }; // Light mode
+};
