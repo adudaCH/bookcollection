@@ -1,18 +1,21 @@
 import {FormikValues, useFormik} from "formik";
-import {FunctionComponent, useEffect, useState} from "react";
+import {FunctionComponent, useEffect, useState,useContext} from "react";
 import * as yup from "yup";
 import {Link, useNavigate} from "react-router-dom";
 import { getAllUsers } from "../sevices/userService";
 import { Users } from "../interfaces/Interfaces";
 import { errorMsg, successMsg } from "../sevices/toastify";
 import "../styleSheet/login.css";
+import { UserContext } from "./context/userContext";
 
 interface LoginProps {}
 
 const Login: FunctionComponent<LoginProps> = () => {
 	const navigate = useNavigate();
 	const [users, setUsers] = useState<Users[]>([]);
-	const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+	const {user,setUser,isLoggedIn,setIsLoggedIn} = useContext(UserContext) || {}
+
+
 
 	useEffect(() => {
 		getAllUsers("")
@@ -47,12 +50,13 @@ const Login: FunctionComponent<LoginProps> = () => {
 					values.password === user.password,
 			);
 		
-			if (user) {
+			if (user && setUser && setIsLoggedIn) {
+				setUser(user);
 				setIsLoggedIn(true);
 				successMsg(`Welcome ${user.name}, good to have you back 🥳`);
 				navigate("/home");
 			} else {
-				setIsLoggedIn(false);
+				// setIsLoggedIn(false);
 				errorMsg("Invalid email or password 🫣");
 				console.log("Invalid email or password");
 			}

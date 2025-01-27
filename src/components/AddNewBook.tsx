@@ -60,7 +60,13 @@ const AddNewBook: FunctionComponent = () => {
                     await postBook(bookPayload); // Call the API
                     successMsg(`${values.title} added successfully`);
                 }
-                formik.resetForm(); // Clear the form
+                formik.setValues({
+                        author:"",
+                        title:"",
+                        genre:"",
+                        price: ""
+                    });
+                // formik.resetForm(); // Clear the form
                 // navigate("/books"); // Navigate to books list
             } catch (err) {
                 console.error("Error adding book:", err); // Log error

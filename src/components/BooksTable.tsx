@@ -38,7 +38,7 @@ const BooksTable: FunctionComponent = () => {
         };
 
         fetchBooks();
-    }, []);
+    }, [books]);
     const handleEdit = async (bookId: string) => {
         if (bookId) {
             try {
